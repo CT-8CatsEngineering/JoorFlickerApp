@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>JoorFlickerApp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3B74FD1A1EF85BBC00F94C29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B74FD2E1EF85BBC00F94C29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B74FD391EF85BBD00F94C29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
