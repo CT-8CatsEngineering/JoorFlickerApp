@@ -156,12 +156,10 @@ func downloadFullImage(session:URLSession, flickrImage:FlickrImage) {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("indexPath: \(indexPath), dataCount: \(data.count)")
         // if we hit an end of the data and we need to load more trigger that. (should already have been triggered but I have seen instances where it didn't)
         if indexPath.row == data.count && lastPage != totalPages {
             if !isLoading {
                 isLoading = true
-                print("load more data")
                 self.loadNextPage()
             }
         }else if firstPage > 1 && indexPath.row == 0 {
@@ -183,7 +181,6 @@ func downloadFullImage(session:URLSession, flickrImage:FlickrImage) {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImageInfoCell", for: indexPath) as! ImageInfoCell
-            //let shiftedIndex = indexPath.row - firstPage*pageSize
             cell.ImageNameLabel.text = data[indexPath.row].titleString
             cell.ImagePreview.image = data[indexPath.row].previewImage
             
@@ -242,7 +239,7 @@ func downloadFullImage(session:URLSession, flickrImage:FlickrImage) {
                 print("loading page: (\(loadingPageNum)) is between FirstPage: \(firstPage) and lastPage: \(lastPage)")
                 isLoading = false
             }
-            //performSelector(onMainThread: #selector(newGame(_:)), with: self, waitUntilDone: false)
+            
         } else {
             print("URLSession had an error: \(error)")
         }
@@ -250,12 +247,11 @@ func downloadFullImage(session:URLSession, flickrImage:FlickrImage) {
     }
 
     func updateForNextPage(indices:[IndexPath]) {
-        print("updating new data")
         let visibleIndices = imageTable.indexPathsForVisibleRows
         
         data.append(contentsOf: loadingImages)
         imageTable.beginUpdates()
-        imageTable.insertRows(at: indices, with: UITableViewRowAnimation.automatic)
+        imageTable.insertRows(at: indices, with: UITableViewRowAnimation.bottom)
         imageTable.endUpdates()
         
         if data.count > 200 {
@@ -266,16 +262,17 @@ func downloadFullImage(session:URLSession, flickrImage:FlickrImage) {
                 deletionIndices.append(IndexPath.init(row: i, section: 0))
                 i += 1
             }
-            print("deletionIndices: \(deletionIndices)")
             imageTable.beginUpdates()
             imageTable.deleteRows(at: deletionIndices, with: UITableViewRowAnimation.automatic)
+            imageTable.scrollToRow(at: IndexPath.init(row: (visibleIndices?.last?.row)!-pageSize, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+            imageTable.reloadData()
             imageTable.endUpdates()
-            imageTable.scrollToRow(at: IndexPath.init(row: (visibleIndices?.last?.row)!-pageSize, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
             firstPage += 1
+        } else {
+            imageTable.reloadData()
         }
         
         lastPage += 1
-        imageTable.reloadData()
         isLoading = false
         loadingImages = [FlickrImage]()
 
@@ -299,14 +296,15 @@ func downloadFullImage(session:URLSession, flickrImage:FlickrImage) {
             data = Array(data.dropLast(pageSize))
             imageTable.beginUpdates()
             imageTable.deleteRows(at: deletionIndices, with: UITableViewRowAnimation.bottom)
+            imageTable.scrollToRow(at: IndexPath.init(row: (visibleIndices?.last?.row)! + pageSize, section: 0), at: UITableViewScrollPosition.top, animated: false)
+            imageTable.reloadData()
             imageTable.endUpdates()
             
-            imageTable.scrollToRow(at: IndexPath.init(row: (visibleIndices?.last?.row)! + pageSize, section: 0), at: UITableViewScrollPosition.top, animated: true)
-            
             lastPage -= 1
+        } else {
+            imageTable.reloadData()
         }
         firstPage -= 1
-        imageTable.reloadData()
         isLoading = false
         loadingImages = [FlickrImage]()
 
