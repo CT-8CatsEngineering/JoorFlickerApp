@@ -15,6 +15,7 @@
 		3B74FD341EF85BBC00F94C29 /* JoorFlickerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD331EF85BBC00F94C29 /* JoorFlickerAppTests.swift */; };
 		3B74FD3F1EF85BBD00F94C29 /* JoorFlickerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD3E1EF85BBD00F94C29 /* JoorFlickerAppUITests.swift */; };
 		3B74FD4D1EF882E300F94C29 /* ImageInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD4C1EF882E300F94C29 /* ImageInfoCell.swift */; };
+		3B74FD4F1EF9AB4800F94C29 /* flickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD4E1EF9AB4800F94C29 /* flickrImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3B74FD3E1EF85BBD00F94C29 /* JoorFlickerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoorFlickerAppUITests.swift; sourceTree = "<group>"; };
 		3B74FD401EF85BBD00F94C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B74FD4C1EF882E300F94C29 /* ImageInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoCell.swift; sourceTree = "<group>"; };
+		3B74FD4E1EF9AB4800F94C29 /* flickrImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = flickrImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				3B74FD1E1EF85BBC00F94C29 /* AppDelegate.swift */,
 				3B74FD201EF85BBC00F94C29 /* ViewController.swift */,
+				3B74FD4E1EF9AB4800F94C29 /* flickrImage.swift */,
 				3B74FD4C1EF882E300F94C29 /* ImageInfoCell.swift */,
 				3B74FD221EF85BBC00F94C29 /* Main.storyboard */,
 				3B74FD251EF85BBC00F94C29 /* Assets.xcassets */,
@@ -264,6 +267,7 @@
 			files = (
 				3B74FD211EF85BBC00F94C29 /* ViewController.swift in Sources */,
 				3B74FD1F1EF85BBC00F94C29 /* AppDelegate.swift in Sources */,
+				3B74FD4F1EF9AB4800F94C29 /* flickrImage.swift in Sources */,
 				3B74FD4D1EF882E300F94C29 /* ImageInfoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
