@@ -13,4 +13,5 @@ class ImageInfoCell:UITableViewCell {
     
     @IBOutlet weak var ImageNameLabel: UILabel!
     @IBOutlet weak var ImagePreview: UIImageView!
+    
 }

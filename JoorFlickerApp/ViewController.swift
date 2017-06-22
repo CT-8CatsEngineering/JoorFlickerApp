@@ -36,10 +36,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "FullScreenImageSegue" {
+            let navControl = segue.destination as? UINavigationController
+            guard let fullImageController = navControl?.topViewController as? FullImageController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            fullImageController.flickrImage = data[(imageTable.indexPathForSelectedRow?.row)!]
+        }
+    }
+    @IBAction func unwindFromPhoto(segue: UIStoryboardSegue) {
+        //don't actually need to do anything.
+    }
+    
     // MARK: - Search bar Delegate
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         flickerSearchBar.text = ""
         data = [FlickrImage]()
+        imageTable.reloadData()
     }
     /*
     "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(flickrAPIKey)&tags=\(flickerSearchBar.text)&per_page=25&format=json&nojsoncallback=1"
@@ -65,7 +81,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.loadPage(pageNumber: firstPage-1)
     }
     func loadPage(pageNumber:Int) {
-        print("load more data")
         //to protect against using pictures with a license you can add &license=7
         let searchURL:URL = URL.init(string: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(flickrAPIKey)&tags=\(flickerSearchBar.text ?? "kittens")&page=\(pageNumber)&per_page=\(pageSize)&sort=date-posted-desc&format=json&nojsoncallback=1&media=photos")!
         let session = URLSession.init(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)

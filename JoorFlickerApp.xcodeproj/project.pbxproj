@@ -16,6 +16,7 @@
 		3B74FD3F1EF85BBD00F94C29 /* JoorFlickerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD3E1EF85BBD00F94C29 /* JoorFlickerAppUITests.swift */; };
 		3B74FD4D1EF882E300F94C29 /* ImageInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD4C1EF882E300F94C29 /* ImageInfoCell.swift */; };
 		3B74FD4F1EF9AB4800F94C29 /* flickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD4E1EF9AB4800F94C29 /* flickrImage.swift */; };
+		3B74FD511EFB244A00F94C29 /* FullImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B74FD501EFB244900F94C29 /* FullImageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		3B74FD401EF85BBD00F94C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B74FD4C1EF882E300F94C29 /* ImageInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoCell.swift; sourceTree = "<group>"; };
 		3B74FD4E1EF9AB4800F94C29 /* flickrImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = flickrImage.swift; sourceTree = "<group>"; };
+		3B74FD501EFB244900F94C29 /* FullImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				3B74FD201EF85BBC00F94C29 /* ViewController.swift */,
 				3B74FD4E1EF9AB4800F94C29 /* flickrImage.swift */,
 				3B74FD4C1EF882E300F94C29 /* ImageInfoCell.swift */,
+				3B74FD501EFB244900F94C29 /* FullImageController.swift */,
 				3B74FD221EF85BBC00F94C29 /* Main.storyboard */,
 				3B74FD251EF85BBC00F94C29 /* Assets.xcassets */,
 				3B74FD271EF85BBC00F94C29 /* LaunchScreen.storyboard */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B74FD511EFB244A00F94C29 /* FullImageController.swift in Sources */,
 				3B74FD211EF85BBC00F94C29 /* ViewController.swift in Sources */,
 				3B74FD1F1EF85BBC00F94C29 /* AppDelegate.swift in Sources */,
 				3B74FD4F1EF9AB4800F94C29 /* flickrImage.swift in Sources */,

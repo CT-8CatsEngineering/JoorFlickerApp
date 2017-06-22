@@ -28,7 +28,7 @@ class FlickrImage: NSObject {
         let photoSecret:String = contents["secret"] as! String
 
         previewImagePath = "https://farm\(farmID).staticflickr.com/\(serverID)/\(imageID)_\(photoSecret)_s.jpg"
-        fullImagePath = "https://farm\(farmID).staticflickr.com/\(serverID)/\(imageID)_\(photoSecret)_k.jpg"
+        fullImagePath = "https://farm\(farmID).staticflickr.com/\(serverID)/\(imageID)_\(photoSecret)_h.jpg"
         
         super.init()
     }

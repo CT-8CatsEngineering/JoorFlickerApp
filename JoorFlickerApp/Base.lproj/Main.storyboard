@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +58,10 @@
                                         <connections>
                                             <outlet property="ImageNameLabel" destination="b0e-qA-r6h" id="MZY-od-WUr"/>
                                             <outlet property="ImagePreview" destination="pD4-An-oe2" id="PWC-s8-Ddm"/>
-                                            <segue destination="Mmn-po-OhK" kind="show" id="X8b-ef-6fC"/>
+                                            <segue destination="Mmn-po-OhK" kind="show" identifier="FullScreenImageSegue" action="showDetailViewController:sender:" id="X8b-ef-6fC">
+                                                <segue key="commit" inheritsFrom="parent" id="XXX-FP-JPI"/>
+                                                <segue key="preview" inheritsFrom="commit" id="Mfv-bG-gwK"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingCell" rowHeight="61" id="Nbr-Q5-tIM">
@@ -126,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="415" y="51"/>
         </scene>
-        <!--Image Name-->
+        <!--Title-->
         <scene sceneID="13T-ze-FzH">
             <objects>
-                <viewController id="O1H-t0-xIb" sceneMemberID="viewController">
+                <viewController id="O1H-t0-xIb" customClass="FullImageController" customModule="JoorFlickerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lcX-Mz-6JH"/>
                         <viewControllerLayoutGuide type="bottom" id="sV7-SJ-sPT"/>
@@ -138,18 +142,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h57-Kv-D1d">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h57-Kv-D1d">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h57-Kv-D1d" firstAttribute="leading" secondItem="kbF-Wi-XLL" secondAttribute="leading" id="414-iD-4HJ"/>
+                            <constraint firstAttribute="bottom" secondItem="h57-Kv-D1d" secondAttribute="bottom" id="dQD-XX-cDN"/>
+                            <constraint firstAttribute="trailing" secondItem="h57-Kv-D1d" secondAttribute="trailing" id="xf7-5A-o6v"/>
+                            <constraint firstItem="h57-Kv-D1d" firstAttribute="top" secondItem="lcX-Mz-6JH" secondAttribute="bottom" id="ySH-NI-aQy"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Image Name" id="qQW-u3-Fmk">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="7IE-9e-2oP"/>
+                    <navigationItem key="navigationItem" title="Title" id="6c2-GJ-HfF">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="4gR-St-6uY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OiI-fv-XIr">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Photos"/>
+                                <connections>
+                                    <segue destination="LiZ-eY-2po" kind="unwind" unwindAction="unwindFromPhotoWithSegue:" id="lsL-0a-bvw"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="FullScreenImageView" destination="h57-Kv-D1d" id="QTx-t5-UZE"/>
+                        <outlet property="NavigationItem" destination="6c2-GJ-HfF" id="noL-9w-4v7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zb8-ac-MTN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LiZ-eY-2po" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1328.8" y="55.322338830584712"/>
         </scene>
@@ -170,4 +194,7 @@
             <point key="canvasLocation" x="-1174" y="51"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="X8b-ef-6fC"/>
+    </inferredMetricsTieBreakers>
 </document>
